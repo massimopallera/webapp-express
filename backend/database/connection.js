@@ -20,7 +20,7 @@ connection.connect((err) => {
 | User: ${dotenv.config().parsed.DB_USER}						     |
 | Database: ${dotenv.config().parsed.DATABASE}				     |
 +------------------------------------------------------------+
-| Connection Status: ${(err) ? (chalk.green('Connected')+"\t\t\t\t    ") : (chalk.red('Not Connected')+"\t\t\t    ")} |
+| Connection Status: ${(!err) ? (chalk.green('Connected')+"\t\t\t\t    ") : (chalk.red('Not Connected')+"\t\t\t    ")} |
 +------------------------------------------------------------+
 `)
 })
