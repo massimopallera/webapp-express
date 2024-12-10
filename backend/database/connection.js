@@ -18,7 +18,7 @@ connection.connect((err) => {
 | Host: ${dotenv.config().parsed.DB_HOST}                      			     |
 | Port: ${dotenv.config().parsed.DB_PORT}                      			     |
 | User: ${dotenv.config().parsed.DB_USER}						     |
-| Database: ${dotenv.config().parsed.DATABASE}				     |
+| Database: ${dotenv.config().parsed.DATABASE}			     |
 +------------------------------------------------------------+
 | Connection Status: ${(!err) ? (chalk.green('Connected')+"\t\t\t\t    ") : (chalk.red('Not Connected')+"\t\t\t    ")} |
 +------------------------------------------------------------+
