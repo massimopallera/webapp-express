@@ -13,7 +13,7 @@ const connection = sql.createConnection({
 connection.connect((err) => {
 	console.log('Connected to Database');
 	console.log(`+------------------------------------------------------------+
-| Database Connection Information                            |
+| ${chalk.blueBright('Database Connection Information')}                            |
 +------------------------------------------------------------+
 | Host: ${dotenv.config().parsed.DB_HOST}                      			     |
 | Port: ${dotenv.config().parsed.DB_PORT}                      			     |
