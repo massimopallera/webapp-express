@@ -7,8 +7,8 @@ const index = (req,res) => {
 
     // Get all movies
     connection.query(sql, (err, results) => {
-        if (err) res.status(err.code).send(err.message)
-        if (!results[0]) res.status(404).send('404 Not Found')
+        if (err) res.status(err.code).json({'error':err.message})
+        if (!results[0]) res.status(404).json({'error' : '404 Not Found'})
         res.status(200).json({'results': results})
     })
 }
@@ -21,7 +21,8 @@ const show = (req,res) => {
         r.id AS id, 
         r.text AS content, 
         r.vote AS rating, 
-        r.created_at AS created_date
+        r.created_at AS created_date,
+        r.name AS username
     FROM 
         movies AS m
     LEFT JOIN 

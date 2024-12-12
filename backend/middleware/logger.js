@@ -4,27 +4,22 @@ const logger = (req, res, next) => {
 
     res.on('finish', () => {
 
-    const time = chalk.yellowBright(`[${new Date().toString()}]`);
-    const urlPath = `${req.path}` 
-    const request = `${req.baseUrl !== '' ? `to ${chalk.blueBright(req.baseUrl)}` : `for ${chalk.blueBright('movie')} with path ${chalk.blueBright(urlPath)}`}`
-    const method = chalk.blueBright(`${req.method}`)
+        const time = chalk.yellowBright(`[${new Date().toString()}]`);
+        const urlPath = `${req.path}` 
+        const request = `${req.baseUrl !== '' ? `to ${chalk.blueBright(req.baseUrl)}` : `for ${chalk.blueBright('movie')} with path ${chalk.blueBright(urlPath)}`}`
+        const method = chalk.blueBright(`${req.method}`)
 
-    const statusCode = res.statusCode
+        const statusCode = res.statusCode
 
-    //get color based on status code
-    let color;
-    let dot;
-    if(statusCode < 300) {color = chalk.green; dot = '🟢'}                              //✅ Success
-    else if (statusCode >= 300 && statusCode <400) color = chalk.cyan                   //🔁 Redirect
-    else if (statusCode>=400 && statusCode<500) {color = chalk.redBright;dot='🔴'}      //🟥 Bad Request
-    else if (statusCode >= 500) {color = chalk.red; dot='⭕'}                           //💀 Server Error
-    else color = chalk.white    
+        //get color based on status code
+        let color, dot;
+        if(statusCode < 300) {color = chalk.green; dot = '🟢'}                              //✅ Success
+        else if (statusCode >= 300 && statusCode <400) color = chalk.cyan                   //🔁 Redirect
+        else if (statusCode>=400 && statusCode<500) {color = chalk.redBright;dot='🔴'}      //🟥 Bad Request
+        else if (statusCode >= 500) {color = chalk.red; dot='⭕'}                           //💀 Server Error
+        else color = chalk.white    
 
-    console.log(`${dot} Request ${request} | Method: ${method} | Time: ${time} | Status: ${color(res.statusCode)}`);  
-    // console.log(res);
-    // console.log(res.statusCode);
-    
-      
+        console.log(`${dot !== '' ? dot : null} Request ${request} | Method: ${method} | Time: ${time} | Status: ${color(res.statusCode)}`);     
     })
 
     next();
