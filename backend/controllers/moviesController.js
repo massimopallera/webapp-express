@@ -45,7 +45,8 @@ const show = (req,res) => {
                     id: row.id,
                     content: row.content,
                     rating: row.rating,
-                    creation_date: row.created_date
+                    creation_date: row.created_date,
+                    username: row.username
                 }))
         };
 
