@@ -9,4 +9,6 @@ router.get('/', moviesController.index)
 // show one film
 router.get('/:id', moviesController.show)
 
+router.post('/:id', moviesController.storeReview)
+
 export default router

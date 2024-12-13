@@ -55,10 +55,23 @@ const show = (req,res) => {
 }
 
 // const update
+const storeReview = (req,res) => {
+    const movie_id = Number(req.params.id)
+    const {vote, username, text} = req.body; //there should be rating, username and review
 
+    const query = `INSERT INTO reviews SET vote = ?, text = ?, name = ?, movie_id = ?`
+
+    connection.query(query, [vote, username, text, movie_id],(err, results) => {
+        if(err) return res.status(500).json({error: err})
+        res.status(204).json({success: true})
+        
+    })
+
+}
 // const destroy 
 
 export default {
     index,
-    show
+    show,
+    storeReview
 }
