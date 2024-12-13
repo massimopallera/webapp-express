@@ -11,6 +11,9 @@ const connection = sql.createConnection({
 })
 
 connection.connect((err) => {
+
+	if(err) throw err;
+
 	console.log('Connected to Database');
 	console.log(`+------------------------------------------------------------+
 | ${chalk.blueBright('Database Connection Information')}                            |

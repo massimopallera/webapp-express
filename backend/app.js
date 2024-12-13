@@ -12,7 +12,6 @@ const server = express() // create server
 const corsOptions = {origin: process.env.WEBAPP_ORIGIN}
 
 server.use(cors(corsOptions))
-
 server.use(express.json())
 
 const HOST = process.env.HOST || "http://localhost"
