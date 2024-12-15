@@ -59,6 +59,9 @@ const storeReview = (req,res) => {
     const movie_id = Number(req.params.id)
     const {vote, username, text} = req.body; //there should be rating, username and review
 
+    if(!vote ||!username ||!text) return res.status(400).json({error: 'All fields are required'})
+    if(vote < 1 || vote > 5) return res.status(400).json({error: 'Rating must be between 1 and 5'})
+
     const query = `INSERT INTO reviews SET vote = ?, text = ?, name = ?, movie_id = ?`
 
     connection.query(query, [vote, username, text, movie_id],(err, results) => {

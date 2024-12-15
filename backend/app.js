@@ -11,6 +11,8 @@ const server = express() // create server
 
 const corsOptions = {origin: process.env.WEBAPP_ORIGIN}
 
+server.use(express.static('public'))
+
 server.use(cors(corsOptions))
 server.use(express.json())
 
