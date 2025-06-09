@@ -12,6 +12,7 @@ const logger = (req, res, next) => {
         const statusCode = res.statusCode
 
         //get color based on status code
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
         let color, dot;
         if(statusCode < 300) {color = chalk.green; dot = '🟢'}                              //✅ Success
         else if (statusCode >= 300 && statusCode <400) {color = chalk.cyan;dot='🔵'}                //🔁 Redirect
@@ -20,7 +21,7 @@ const logger = (req, res, next) => {
         else color = chalk.white    
 
         // if (statusCode!=304) {
-            console.log(`${dot !== '' ? dot : null} Request ${request} | Method: ${method} | Time: ${time} | Status: ${color(statusCode)}`);     
+            console.log(`${dot !== '' ? dot : null} Request ${request} | Method: ${method} | Time: ${time} | Status: ${color(statusCode)} | FROM: ${ip}`);     
     // }
 })
 

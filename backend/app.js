@@ -9,17 +9,17 @@ import logger from './middleware/logger.js'
 
 const server = express() // create server
 
-const corsOptions = {origin: process.env.WEBAPP_ORIGIN}
+// const corsOptions = {origin: process.env.WEBAPP_ORIGIN}
 
 server.use(express.static('public'))
 
-server.use(cors(corsOptions))
+// server.use(cors(corsOptions))
 server.use(express.json())
 
 const HOST = process.env.HOST || "http://localhost"
 const PORT = process.env.PORT || 3000 || 3001 || 3002
 
-server.listen(PORT, ()=> console.log(`Server listening on ${HOST}:${PORT}`))
+server.listen(3000, '0.0.0.0', ()=> console.log(`Server listening on ${HOST}:${PORT}`))
 
 server.use('/', logger)
 
